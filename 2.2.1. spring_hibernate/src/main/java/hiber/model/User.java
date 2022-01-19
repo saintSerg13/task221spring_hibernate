@@ -1,5 +1,3 @@
-
-
 package hiber.model;
 
 import org.springframework.lang.NonNull;
@@ -31,11 +29,6 @@ public class User {
    public User() {
    }
 
-   public User(String firstName, String lastName, String email) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-   }
 
    public User(String firstName, String lastName, String email, Car car) {
       this.firstName = firstName;
