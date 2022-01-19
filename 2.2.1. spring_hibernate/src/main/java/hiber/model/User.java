@@ -1,4 +1,9 @@
+
+
 package hiber.model;
+
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -10,6 +15,10 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "car", referencedColumnName = "series")
+   private Car car;
+
    @Column(name = "name")
    private String firstName;
 
@@ -19,12 +28,28 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   public User() {}
-   
+   public User() {
+   }
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+   }
+
+   public User(String firstName, String lastName, String email, Car car) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.car = car;
+   }
+
+   public Car getCar() {
+      return car;
+   }
+
+   public void setCar(Car car) {
+      this.car = car;
    }
 
    public Long getId() {
